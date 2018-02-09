@@ -3,32 +3,23 @@ import sys
 import schedule
 import time
 from DelcomPython import DelcomUSBDevice
+from light import Light
 
 PERIOD = 10
 
 def flash():
   print("Hello World")
-  delcom.LEDControl(delcom.LED1, delcom.LEDON)
-
-def initialise_delcom():
-  delcom = DelcomUSBDevice()
-  if delcom.find() == 0:
-    print("Failed to find delcom device")
-    sys.exit(0)
-  delcom.open()
-  print("Delcom device found.")
-  delcom.DisplayInfo()
-  return delcom
+  light.green()
 
 schedule.every(PERIOD).seconds.do(flash)
-delcom = initialise_delcom()
+light = Light()
+light.reset()
 
 while True:
   try:
     schedule.run_pending()
     time.sleep(1)
   except KeyboardInterrupt:
-    delcom.LEDControl(delcom.LEDALL, delcom.LEDOFF)
-    delcom.close()
+    light.close()
     print("Terminating")
     sys.exit(0)
