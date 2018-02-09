@@ -19,7 +19,7 @@ def initialise_delcom():
   return delcom
 
 schedule.every(PERIOD).seconds.do(flash)
-delcom = initialise_light()
+delcom = initialise_delcom()
 
 while True:
   try:
