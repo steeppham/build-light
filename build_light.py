@@ -9,7 +9,7 @@ PERIOD = 10
 def flash():
   print("Hello World")
 
-def initialise_light():
+def initialise_delcom():
   delcom = DelcomUSBDevice()
   if delcom.find() == 0:
     print("Failed to find delcom device")
@@ -19,7 +19,13 @@ def initialise_light():
   return delcom
 
 schedule.every(PERIOD).seconds.do(flash)
-initialise_light()
+delcom = initialise_light()
+
 while True:
-  schedule.run_pending()
-  time.sleep(1)
+  try:
+    schedule.run_pending()
+    time.sleep(1)
+  except KeyboardInterrupt:
+    delcom.close()
+    print("Terminating")
+    sys.exit(0)
