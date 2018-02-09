@@ -28,7 +28,7 @@ while True:
     schedule.run_pending()
     time.sleep(1)
   except KeyboardInterrupt:
-    delcom.LEDControl(delcom.LEDALL, LEDOFF)
+    delcom.LEDControl(delcom.LEDALL, delcom.LEDOFF)
     delcom.close()
     print("Terminating")
     sys.exit(0)
