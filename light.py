@@ -15,7 +15,7 @@ class Light:
     self.delcom.close()
 
   def reset(self):
-    self.delcom.LEDControl(delcom.LEDALL, delcom.LEDOFF)
+    self.delcom.LEDControl(self.delcom.LEDALL, self.delcom.LEDOFF)
 
   def green(self):
-    self.delcom.LEDControl(delcom.LED1, delcom.LEDON)
+    self.delcom.LEDControl(self.delcom.LED1, self.delcom.LEDON)
