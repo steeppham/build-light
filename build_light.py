@@ -15,7 +15,8 @@ def initialise_delcom():
     print("Failed to find delcom device")
     sys.exit(0)
   delcom.open()
-  print("Delcom device found:", delcom.DisplayInfo())
+  print("Delcom device found.")
+  delcom.DisplayInfo()
   return delcom
 
 schedule.every(PERIOD).seconds.do(flash)
