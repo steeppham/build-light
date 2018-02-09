@@ -8,6 +8,7 @@ PERIOD = 10
 
 def flash():
   print("Hello World")
+  delcom.LEDControl(delcom.LED1, delcom.LEDON)
 
 def initialise_delcom():
   delcom = DelcomUSBDevice()
@@ -27,6 +28,7 @@ while True:
     schedule.run_pending()
     time.sleep(1)
   except KeyboardInterrupt:
+    delcom.LEDControl(delcom.LEDALL, LEDOFF)
     delcom.close()
     print("Terminating")
     sys.exit(0)
